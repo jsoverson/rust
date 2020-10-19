@@ -213,7 +213,7 @@ fn initial_buffer_size(file: &File) -> usize {
 /// [`read_to_end`]: Read::read_to_end
 ///
 /// # Errors
-///
+//
 /// This function will return an error if `path` does not already exist.
 /// Other errors may also be returned according to [`OpenOptions::open`].
 ///
@@ -224,11 +224,11 @@ fn initial_buffer_size(file: &File) -> usize {
 ///
 /// ```no_run
 /// use std::fs;
-/// use std::net::SocketAddr;
-///
-/// fn main() -> Result<(), Box<dyn std::error::Error + 'static>> {
-///     let foo: SocketAddr = String::from_utf8_lossy(&fs::read("address.txt")?).parse()?;
-///     Ok(())
+/// 
+/// fn main() {
+///   let bytes = fs::read("address.txt").expect("could not read file");
+///   let contents_txt: String = String::from_utf8(bytes).expect("could not convert contents");
+///   println!("{}", contents_txt);
 /// }
 /// ```
 #[stable(feature = "fs_read_write_bytes", since = "1.26.0")]
